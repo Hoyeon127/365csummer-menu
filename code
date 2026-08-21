@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>36.5°C Summer East Branch Menu</title>
+  <meta
+    name="description"
+    content="36.5°C Summer East Branch · Food · Beer · Cocktails · Drinks Menu"
+  />
+
+  <style>
+    :root{
+      --bg:#D2EFE5;
+      --ink:#222;
+      --ink-dim:#555;
+      --brand:#007acc;
+      --card:#fff;
+      --chip:#e6f7ff;
+      --chip-border:#b3e5fc;
+      --rule:#eaeef2;
+      --shadow:0 4px 12px rgba(0,0,0,.06);
+      --radius:14px;
+      --radius-xs:8px;
+      --maxw:960px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html,
+    body{
+      height:100%;
+    }
+
+    body{
+      margin:0;
+      font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+
+    a{
+      color:var(--brand);
+      text-decoration:none;
+    }
+
+    /* =========================
+       Cover
+    ========================= */
+
+    .cover{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      background:var(--bg);
+      display:flex;
+    }
+
+    .cover.hidden{
+      display:none;
+    }
+
+    .cover .bgimg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .cover .cta-wrap{
+      position:relative;
+      z-index:2;
+      width:100%;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding:18px 16px calc(18px + env(safe-area-inset-bottom));
+      pointer-events:none;
+    }
+
+    .cover .cta{
+      pointer-events:auto;
+      border:0;
+      border-radius:999px;
+      padding:14px 18px;
+      font-size:15px;
+      font-weight:800;
+      background:#000;
+      color:#fff;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      cursor:pointer;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:
+        linear-gradient(
+          180deg,
+          #ffffffee,
+          #ffffffcc 60%,
+          transparent
+        );
+      backdrop-filter:saturate(1.2) blur(6px);
+      border-bottom:1px solid var(--rule);
+    }
+
+    .bar{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    h1.title{
+      margin:0;
+      font-weight:800;
+      letter-spacing:-.01em;
+      font-size:clamp(20px,3.8vw,32px);
+    }
+
+    .ig{
+      font-size:13px;
+      color:var(--ink-dim);
+    }
+
+    /* =========================
+       Main Container
+    ========================= */
+
+    main.container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:18px 20px 80px;
+    }
+
+    /* =========================
+       Search
+    ========================= */
+
+    .search{
+      position:relative;
+      margin:12px 0 4px;
+    }
+
+    .search input{
+      width:100%;
+      padding:12px 40px 12px 12px;
+      border:1px solid var(--rule);
+      border-radius:12px;
+      background:#fff;
+      outline:none;
+    }
+
+    .search .icon{
+      position:absolute;
+      right:10px;
+      top:50%;
+      transform:translateY(-50%);
+      opacity:.55;
+    }
+
+    /* =========================
+       Navigation Chips
+    ========================= */
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:18px 0;
+    }
+
+    .chip{
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+    }
+
+    .chip.active{
+      background:#000;
+      color:#fff;
+      border-color:#000;
+    }
+
+    /* =========================
+       Menu Sections
+    ========================= */
+
+    section.menu{
+      margin:18px 0 28px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+
+    section.menu h2{
+      margin:0 0 10px;
+      padding-bottom:8px;
+      border-bottom:2px solid var(--chip-border);
+      color:var(--brand);
+      font-size:20px;
+    }
+
+    /* =========================
+       Menu Items
+    ========================= */
+
+    ul.items{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    li.item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px dashed var(--rule);
+    }
+
+    li.item:last-child{
+      border-bottom:0;
+    }
+
+    .i-name{
+      font-weight:600;
+    }
+
+    .i-price{
+      white-space:nowrap;
+      color:var(--brand);
+      font-weight:800;
+    }
+
+    .i-desc{
+      display:block;
+      margin-top:6px;
+      color:#777;
+      font-size:12.5px;
+      line-height:1.45;
+    }
+
+    /* =========================
+       Cocktail Grid
+    ========================= */
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .grid .item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border:1px solid var(--rule);
+      background:#fafafa;
+      border-radius:var(--radius-xs);
+      padding:10px 12px;
+      gap:10px;
+    }
+
+    .grid .left{
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .grid .i-name{
+      font-weight:700;
+      display:block;
+      min-width:0;
+      overflow-wrap:anywhere;
+    }
+
+    .grid .i-price{
+      color:var(--brand);
+      font-weight:800;
+      flex:0 0 auto;
+      text-align:right;
+      min-width:64px;
+    }
+
+    /* =========================
+       Sweetness / Strength
+    ========================= */
+
+    .meta{
+      margin-top:6px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      color:var(--ink-dim);
+      font-size:12px;
+      line-height:1.2;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#fff;
+      border:1px solid var(--rule);
+      border-radius:999px;
+      padding:4px 8px;
+    }
+
+    .stars{
+      letter-spacing:1px;
+    }
+
+    .stars .on{
+      color:#111;
+    }
+
+    .stars .off{
+      opacity:.25;
+    }
+
+    /* =========================
+       Cocktail Sort Buttons
+    ========================= */
+
+    .sortbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:10px 0 12px;
+    }
+
+    .sortbtn{
+      border:1px solid var(--rule);
+      background:#fff;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .sortbtn.active{
+      background:#000;
+      color:#fff;
+      border-color:#000;
+    }
+
+    /* =========================
+       Back to Top
+    ========================= */
+
+    .to-top{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      background:#000;
+      color:#fff;
+      border:0;
+      border-radius:999px;
+      padding:12px 14px;
+      font-size:13px;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+
+    /* =========================
+       Mobile
+    ========================= */
+
+    @media (max-width:640px){
+
+      .bar{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:6px;
+      }
+
+      h1.title{
+        font-size:clamp(24px,8.5vw,36px);
+      }
+
+      .ig{
+        font-size:12px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      main.container{
+        padding-left:20px;
+        padding-right:20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       Cover
+  ========================= -->
+
+  <section class="cover" id="cover">
+    <img
+      class="bgimg"
+      src="36.5csummer.png"
+      alt="36.5°C Summer East Branch"
+    />
+
+    <div class="cta-wrap">
+      <button class="cta" id="goMenu">
+        View Menu
+      </button>
+    </div>
+  </section>
+
+
+  <!-- =========================
+       Header
+  ========================= -->
+
+  <header class="site-header">
+    <div class="bar">
+
+      <h1 class="title">
+        36.5°C Summer — East Branch
+      </h1>
+
+      <div class="ig">
+        Instagram:
+        <a
+          href="https://www.instagram.com/365csummer"
+          target="_blank"
+          rel="noopener"
+        >
+          @365csummer
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       Main Menu
+  ========================= -->
+
+  <main class="container">
+
+    <!-- Search -->
+
+    <div class="search">
+      <input
+        id="q"
+        type="search"
+        placeholder="Search the menu (e.g. udon, lime, vodka)…"
+        aria-label="Search menu"
+      />
+      <span class="icon">🔎</span>
+    </div>
+
+
+    <!-- Navigation -->
+
+    <nav class="nav" aria-label="Menu categories">
+
+      <button class="chip active" data-scroll="#plate">
+        Summer Plate
+      </button>
+
+      <button class="chip" data-scroll="#beer">
+        Beer
+      </button>
+
+      <button class="chip" data-scroll="#beverage">
+        Beverage
+      </button>
+
+      <button class="chip" data-scroll="#simsool">
+        Simsool
+      </button>
+
+      <button class="chip" data-scroll="#whisky">
+        Whiskey &amp; Wine
+      </button>
+
+      <button class="chip" data-scroll="#cocktail">
+        Cocktail
+      </button>
+
+    </nav>
+
+
+    <!-- =========================
+         Summer Plate
+    ========================= -->
+
+    <section id="plate" class="menu" data-section>
+
+      <h2>🍽️ Summer Plate</h2>
+
+      <ul class="items">
+
+        <li
+          class="item"
+          data-k="seafood summer stir fried udon teriyaki mayo bonito flakes"
+        >
+          <span>
+            <span class="i-name">
+              Summer Stir-Fried Udon — Seafood
+            </span>
+            <span class="i-desc">
+              Sweet and spicy teriyaki-mayo stir-fried udon
+              topped with seafood and bonito flakes
+            </span>
+          </span>
+          <span class="i-price">13,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="beef summer stir fried udon teriyaki mayo"
+        >
+          <span>
+            <span class="i-name">
+              Summer Stir-Fried Udon — Beef
+            </span>
+            <span class="i-desc">
+              Sweet and spicy teriyaki-mayo stir-fried udon
+              generously topped with beef
+            </span>
+          </span>
+          <span class="i-price">13,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="pork spicy noodles samgyeopsal bibim noodles"
+        >
+          <span>
+            <span class="i-name">
+              Spicy Noodles with Grilled Pork
+            </span>
+            <span class="i-desc">
+              Spicy Korean-style mixed noodles served with
+              golden grilled pork
+            </span>
+          </span>
+          <span class="i-price">16,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="summer udon tteokbokki spicy gochujang cheese"
+        >
+          <span>
+            <span class="i-name">
+              Summer Spicy Udon
+            </span>
+            <span class="i-desc">
+              Udon cooked in our signature spicy gochujang sauce
+              (similar heat level to Buldak noodles) ·
+              <b>Add cheese +3,000</b>
+            </span>
+          </span>
+          <span class="i-price">14,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="summer shrimp chilli sweet spicy shrimp"
+        >
+          <span>
+            <span class="i-name">
+              Summer Shrimp
+            </span>
+            <span class="i-desc">
+              Juicy shrimp generously coated in a sweet and spicy
+              chilli sauce
+            </span>
+          </span>
+          <span class="i-price">19,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="summer fried chicken sweet spicy korean chicken"
+        >
+          <span>
+            <span class="i-name">
+              Summer Fried Chicken
+            </span>
+            <span class="i-desc">
+              Crispy on the outside, tender on the inside —
+              Korean-style sweet and spicy fried chicken
+            </span>
+          </span>
+          <span class="i-price">13,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="mozzart tomato mozzarella caprese balsamic cheese"
+        >
+          <span>
+            <span class="i-name">
+              Mozzart Tomato
+            </span>
+            <span class="i-desc">
+              Tomato and cheese finished with balsamic sauce —
+              a perfect match with wine or beer
+            </span>
+          </span>
+          <span class="i-price">11,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="cheese gratin potato sausage salsa mozzarella"
+        >
+          <span>
+            <span class="i-name">
+              Cheese Gratin
+            </span>
+            <span class="i-desc">
+              Potato and Frankfurt sausage with our signature
+              salsa sauce, topped with melted mozzarella
+            </span>
+          </span>
+          <span class="i-price">16,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="corn cheese sweet corn mayonnaise mozzarella"
+        >
+          <span>
+            <span class="i-name">
+              Korean Corn Cheese
+            </span>
+            <span class="i-desc">
+              Sweet corn loaded with creamy mayonnaise and cheese
+            </span>
+          </span>
+          <span class="i-price">14,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="nachos cheese salsa"
+        >
+          <span>
+            <span class="i-name">
+              Nachos
+            </span>
+            <span class="i-desc">
+              Crispy nachos served with cheese sauce and salsa
+            </span>
+          </span>
+          <span class="i-price">8,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="grilled dried filefish jwipo korean snack"
+        >
+          <span>
+            <span class="i-name">
+              Grilled Jwipo
+            </span>
+            <span class="i-desc">
+              Classic Korean grilled dried fish served with
+              our signature dipping sauce
+            </span>
+          </span>
+          <span class="i-price">11,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="semi dried squid grilled squid mayonnaise gochujang"
+        >
+          <span>
+            <span class="i-name">
+              Semi-Dried Squid
+            </span>
+            <span class="i-desc">
+              Tender semi-dried squid served with
+              spicy mayo dipping sauce
+            </span>
+          </span>
+          <span class="i-price">13,900</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="dried pollock meoktae beer snack"
+        >
+          <span>
+            <span class="i-name">
+              Dried Pollock
+            </span>
+            <span class="i-desc">
+              A crispy, savoury Korean snack made for beer
+            </span>
+          </span>
+          <span class="i-price">15,900</span>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <!-- =========================
+         Beer
+    ========================= -->
+
+    <section id="beer" class="menu" data-section>
+
+      <h2>🍺 Beer</h2>
+
+      <ul class="items">
+
+        <li class="item" data-k="summer draft beer">
+          <span class="i-name">Summer Draft Beer</span>
+          <span class="i-price">3,900</span>
+        </li>
+
+        <li class="item" data-k="passionfruit draft beer">
+          <span class="i-name">Passionfruit Draft Beer</span>
+          <span class="i-price">4,900</span>
+        </li>
+
+        <li class="item" data-k="lime draft beer">
+          <span class="i-name">Lime Draft Beer</span>
+          <span class="i-price">4,900</span>
+        </li>
+
+        <li class="item" data-k="honey draft beer">
+          <span class="i-name">Summer Honey Draft Beer</span>
+          <span class="i-price">4,900</span>
+        </li>
+
+        <li class="item" data-k="lime honey draft beer">
+          <span class="i-name">Lime &amp; Honey Draft Beer</span>
+          <span class="i-price">5,400</span>
+        </li>
+
+        <li class="item" data-k="clara beer">
+          <span class="i-name">Clara</span>
+          <span class="i-price">4,900</span>
+        </li>
+
+        <li class="item" data-k="kahlua draft beer">
+          <span class="i-name">Kahlúa Draft Beer</span>
+          <span class="i-price">5,900</span>
+        </li>
+
+        <li class="item" data-k="big mac beer">
+          <span class="i-name">Big Mac</span>
+          <span class="i-price">6,900</span>
+        </li>
+
+        <li class="item" data-k="lime big mac beer">
+          <span class="i-name">Lime Big Mac</span>
+          <span class="i-price">7,900</span>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <!-- =========================
+         Beverage
+    ========================= -->
+
+    <section id="beverage" class="menu" data-section>
+
+      <h2>🥤 Beverage</h2>
+
+      <ul class="items">
+
+        <li class="item" data-k="triple berry ade">
+          <span class="i-name">Triple Berry Ade</span>
+          <span class="i-price">5,900</span>
+        </li>
+
+        <li class="item" data-k="lime ade">
+          <span class="i-name">Lime Ade</span>
+          <span class="i-price">5,900</span>
+        </li>
+
+        <li class="item" data-k="passionfruit ade">
+          <span class="i-name">Passionfruit Ade</span>
+          <span class="i-price">5,900</span>
+        </li>
+
+        <li class="item" data-k="add alcohol">
+          <span class="i-name">Add Alcohol</span>
+          <span class="i-price">+2,000</span>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <!-- =========================
+         Simsool
+    ========================= -->
+
+    <section id="simsool" class="menu" data-section>
+
+      <h2>🍶 Simsool</h2>
+
+      <ul class="items">
+
+        <li
+          class="item"
+          data-k="simsool 7 grape blueberry sparkling"
+        >
+          <span>
+            <span class="i-name">
+              Simsool 7%
+            </span>
+            <span class="i-desc">
+              Sweet and refreshing sparkling fruit wine
+              with grape and blueberry flavours
+            </span>
+          </span>
+          <span class="i-price">7,000</span>
+        </li>
+
+
+        <li
+          class="item"
+          data-k="simsool 12 grape blueberry wine"
+        >
+          <span>
+            <span class="i-name">
+              Simsool 12%
+            </span>
+            <span class="i-desc">
+              Fruity grape and blueberry flavours with
+              a clean finish and richer wine character
+            </span>
+          </span>
+          <span class="i-price">7,000</span>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <!-- =========================
+         Whiskey & Wine
+    ========================= -->
+
+    <section id="whisky" class="menu" data-section>
+
+      <h2>🥃 Whiskey &amp; Wine</h2>
+
+      <ul class="items">
+
+        <li class="item" data-k="jack daniels 500 whiskey">
+          <span class="i-name">Jack Daniel’s 500ml</span>
+          <span class="i-price">95,000</span>
+        </li>
+
+        <li class="item" data-k="jack daniels 700 whiskey">
+          <span class="i-name">Jack Daniel’s 700ml</span>
+          <span class="i-price">120,000</span>
+        </li>
+
+        <li class="item" data-k="jose cuervo tequila">
+          <span class="i-name">Jose Cuervo Tequila</span>
+          <span class="i-price">95,000</span>
+        </li>
+
+        <li class="item" data-k="bombay gin 750">
+          <span class="i-name">Bombay Gin 750ml</span>
+          <span class="i-price">100,000</span>
+        </li>
+
+        <li class="item" data-k="suntory whiskey">
+          <span class="i-name">Suntory Whisky</span>
+          <span class="i-price">100,000</span>
+        </li>
+
+        <li class="item" data-k="highball">
+          <span class="i-name">Highball</span>
+          <span class="i-price">7,900</span>
+        </li>
+
+        <li class="item" data-k="tequila vodka shot">
+          <span class="i-name">Tequila / Vodka Shot</span>
+          <span class="i-price">3,900</span>
+        </li>
+
+        <li class="item" data-k="whiskey shot">
+          <span class="i-name">Whiskey Shot</span>
+          <span class="i-price">5,500</span>
+        </li>
+
+        <li class="item" data-k="valdivieso cabernet sauvignon red wine">
+          <span class="i-name">
+            Valdivieso Cabernet Sauvignon (Red)
+          </span>
+          <span class="i-price">45,000</span>
+        </li>
+
+        <li class="item" data-k="moscato asti white wine">
+          <span class="i-name">
+            Moscato d’Asti (White)
+          </span>
+          <span class="i-price">45,000</span>
+        </li>
+
+        <li class="item" data-k="house red wine">
+          <span class="i-name">
+            House Wine (Red)
+          </span>
+          <span class="i-price">5,900</span>
+        </li>
+
+        <li class="item" data-k="sangria">
+          <span class="i-name">
+            Sangria
+          </span>
+          <span class="i-price">6,900</span>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <!-- =========================
+         Cocktails
+    ========================= -->
+
+    <section id="cocktail" class="menu" data-section>
+
+      <h2>🍸 Cocktails</h2>
+
+      <!-- Sorting Controls -->
+
+      <div class="sortbar" aria-label="Sort cocktails">
+
+        <button
+          class="sortbtn active"
+          data-sort="default"
+        >
+          Default
+        </button>
+
+        <button
+          class="sortbtn"
+          data-sort="sweet-desc"
+        >
+          Sweetest First
+        </button>
+
+        <button
+          class="sortbtn"
+          data-sort="sweet-asc"
+        >
+          Least Sweet First
+        </button>
+
+        <button
+          class="sortbtn"
+          data-sort="abv-desc"
+        >
+          Strongest First
+        </button>
+
+        <button
+          class="sortbtn"
+          data-sort="abv-asc"
+        >
+          Lightest First
+        </button>
+
+      </div>
+
+
+      <div
+        class="grid cocktail-grid"
+        id="cocktailList"
+        role="list"
+        aria-label="Cocktails"
+      >
+
+        <!-- Vodka Orange -->
+
+        <div
+          class="item"
+          data-k="vodka orange"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Vodka Orange
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">6,900</span>
+        </div>
+
+
+        <!-- Vodka Tonic -->
+
+        <div
+          class="item"
+          data-k="vodka tonic"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Vodka Tonic
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">6,900</span>
+        </div>
+
+
+        <!-- Gin Tonic -->
+
+        <div
+          class="item"
+          data-k="gin tonic"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Gin &amp; Tonic
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">6,900</span>
+        </div>
+
+
+        <!-- Vodka Cranberry -->
+
+        <div
+          class="item"
+          data-k="vodka cranberry"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Vodka Cranberry
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">6,900</span>
+        </div>
+
+
+        <!-- Vodka Lime -->
+
+        <div
+          class="item"
+          data-k="vodka lime"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Vodka Lime
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Bombay Gin Tonic -->
+
+        <div
+          class="item"
+          data-k="bombay gin tonic"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Bombay Gin &amp; Tonic
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,900</span>
+        </div>
+
+
+        <!-- Baileys Milk -->
+
+        <div
+          class="item"
+          data-k="baileys milk"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Baileys Milk
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Kahlua Milk -->
+
+        <div
+          class="item"
+          data-k="kahlua milk"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Kahlúa Milk
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Malibu Orange -->
+
+        <div
+          class="item"
+          data-k="malibu orange"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Malibu Orange
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Malibu Milk -->
+
+        <div
+          class="item"
+          data-k="malibu milk"
+          data-sweet="3"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Malibu Milk
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Jack & Coke -->
+
+        <div
+          class="item"
+          data-k="jack coke jack daniels"
+          data-sweet="3"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Jack &amp; Coke
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Black Russian -->
+
+        <div
+          class="item"
+          data-k="black russian"
+          data-sweet="3"
+          data-abv="4"
+        >
+          <div class="left">
+            <span class="i-name">
+              Black Russian
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Devil's Allure -->
+
+        <div
+          class="item"
+          data-k="devils allure"
+          data-sweet="4"
+          data-abv="5"
+        >
+          <div class="left">
+            <span class="i-name">
+              Devil's Allure
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,900</span>
+        </div>
+
+
+        <!-- Cosmopolitan -->
+
+        <div
+          class="item"
+          data-k="cosmopolitan"
+          data-sweet="3"
+          data-abv="4"
+        >
+          <div class="left">
+            <span class="i-name">
+              Cosmopolitan
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Cuba Libre -->
+
+        <div
+          class="item"
+          data-k="cuba libre"
+          data-sweet="3"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Cuba Libre
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- Kamikaze -->
+
+        <div
+          class="item"
+          data-k="kamikaze"
+          data-sweet="3"
+          data-abv="5"
+        >
+          <div class="left">
+            <span class="i-name">
+              Kamikaze
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,400</span>
+        </div>
+
+
+        <!-- White Russian -->
+
+        <div
+          class="item"
+          data-k="white russian"
+          data-sweet="3"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              White Russian
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Why Not -->
+
+        <div
+          class="item"
+          data-k="why not"
+          data-sweet="4"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Why Not
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,900</span>
+        </div>
+
+
+        <!-- Grand Blue -->
+
+        <div
+          class="item"
+          data-k="grand blue"
+          data-sweet="4"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Grand Blue
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">7,900</span>
+        </div>
+
+
+        <!-- Tequila Sunrise -->
+
+        <div
+          class="item"
+          data-k="tequila sunrise"
+          data-sweet="3"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              Tequila Sunrise
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Midori Sour -->
+
+        <div
+          class="item"
+          data-k="midori sour"
+          data-sweet="4"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Midori Sour
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Peach Crush -->
+
+        <div
+          class="item"
+          data-k="peach crush"
+          data-sweet="4"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Peach Crush
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Melona -->
+
+        <div
+          class="item"
+          data-k="melona"
+          data-sweet="3"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Melona
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Peach Coco -->
+
+        <div
+          class="item"
+          data-k="peach coco"
+          data-sweet="4"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Peach Coco
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Violet -->
+
+        <div
+          class="item"
+          data-k="violet"
+          data-sweet="4"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Violet
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Love Actually -->
+
+        <div
+          class="item"
+          data-k="love actually"
+          data-sweet="4"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Love Actually
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Malibu Cran Pine -->
+
+        <div
+          class="item"
+          data-k="malibu cranberry pineapple"
+          data-sweet="4"
+          data-abv="1"
+        >
+          <div class="left">
+            <span class="i-name">
+              Malibu Cran-Pine
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="1"></span>
+                <span>1/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Sex on the Beach -->
+
+        <div
+          class="item"
+          data-k="sex on the beach"
+          data-sweet="3"
+          data-abv="4"
+        >
+          <div class="left">
+            <span class="i-name">
+              Sex on the Beach
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Summer -->
+
+        <div
+          class="item"
+          data-k="summer signature cocktail"
+          data-sweet="4"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              Summer
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Cherry Rum Fizz -->
+
+        <div
+          class="item"
+          data-k="cherry rum fizz"
+          data-sweet="4"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              Cherry Rum Fizz
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Singapore Sling -->
+
+        <div
+          class="item"
+          data-k="singapore sling"
+          data-sweet="3"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Singapore Sling
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Suri Berry Cherry Berry -->
+
+        <div
+          class="item"
+          data-k="suri berry cherry berry"
+          data-sweet="5"
+          data-abv="2"
+        >
+          <div class="left">
+            <span class="i-name">
+              Suri Berry Cherry Berry
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="2"></span>
+                <span>2/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,400</span>
+        </div>
+
+
+        <!-- Blue Hawaii -->
+
+        <div
+          class="item"
+          data-k="blue hawaii"
+          data-sweet="3"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              Blue Hawaii
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Lynchburg Lemonade -->
+
+        <div
+          class="item"
+          data-k="lynchburg lemonade"
+          data-sweet="3"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              Lynchburg Lemonade
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">8,900</span>
+        </div>
+
+
+        <!-- Tokyo Iced Tea -->
+
+        <div
+          class="item"
+          data-k="tokyo iced tea"
+          data-sweet="4"
+          data-abv="5"
+        >
+          <div class="left">
+            <span class="i-name">
+              Tokyo Iced Tea
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">9,900</span>
+        </div>
+
+
+        <!-- June Bug -->
+
+        <div
+          class="item"
+          data-k="june bug"
+          data-sweet="4"
+          data-abv="3"
+        >
+          <div class="left">
+            <span class="i-name">
+              June Bug
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="4"></span>
+                <span>4/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">9,400</span>
+        </div>
+
+
+        <!-- Long Island Iced Tea -->
+
+        <div
+          class="item"
+          data-k="long island iced tea"
+          data-sweet="3"
+          data-abv="5"
+        >
+          <div class="left">
+            <span class="i-name">
+              Long Island Iced Tea
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">9,400</span>
+        </div>
+
+
+        <!-- Long Beach Iced Tea -->
+
+        <div
+          class="item"
+          data-k="long beach iced tea"
+          data-sweet="3"
+          data-abv="5"
+        >
+          <div class="left">
+            <span class="i-name">
+              Long Beach Iced Tea
+            </span>
+
+            <div class="meta">
+              <span class="tag">
+                <span>Sweetness</span>
+                <span class="stars" data-stars="3"></span>
+                <span>3/5</span>
+              </span>
+
+              <span class="tag">
+                <span>Strength</span>
+                <span class="stars" data-stars="5"></span>
+                <span>5/5</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="i-price">9,400</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Back to Top -->
+
+  <button
+    class="to-top"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    ▲ Top
+  </button>
+
+
+  <script>
+
+    /* =========================
+       Cover → Menu
+    ========================= */
+
+    const cover = document.getElementById('cover');
+
+    document
+      .getElementById('goMenu')
+      ?.addEventListener('click', () => {
+
+        cover.classList.add('hidden');
+
+        window.scrollTo({
+          top:0,
+          behavior:'instant'
+        });
+
+      });
+
+
+    /* =========================
+       Smooth Navigation
+    ========================= */
+
+    document
+      .querySelectorAll('.chip')
+      .forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+          document
+            .querySelectorAll('.chip')
+            .forEach(b => b.classList.remove('active'));
+
+          btn.classList.add('active');
+
+          const selector =
+            btn.getAttribute('data-scroll');
+
+          const target =
+            document.querySelector(selector);
+
+          const header =
+            document.querySelector('.site-header');
+
+          if(target){
+
+            const y =
+              target.getBoundingClientRect().top
+              + window.scrollY
+              - (header?.offsetHeight || 76);
+
+            window.scrollTo({
+              top:y,
+              behavior:'smooth'
+            });
+
+          }
+
+        });
+
+      });
+
+
+    /* =========================
+       Back to Top
+    ========================= */
+
+    document
+      .querySelector('.to-top')
+      .addEventListener('click', () => {
+
+        window.scrollTo({
+          top:0,
+          behavior:'smooth'
+        });
+
+      });
+
+
+    /* =========================
+       Rating Dots
+    ========================= */
+
+    function renderStars(el){
+
+      const n = Math.max(
+        0,
+        Math.min(
+          5,
+          parseInt(
+            el.getAttribute('data-stars') || '0',
+            10
+          )
+        )
+      );
+
+      let html = '';
+
+      for(let i = 1; i <= 5; i++){
+
+        html +=
+          i <= n
+            ? '<span class="on">●</span>'
+            : '<span class="off">●</span>';
+
+      }
+
+      el.innerHTML = html;
+    }
+
+    document
+      .querySelectorAll('.stars')
+      .forEach(renderStars);
+
+
+    /* =========================
+       Menu Search
+    ========================= */
+
+    const q =
+      document.getElementById('q');
+
+    const sections =
+      [...document.querySelectorAll('[data-section]')];
+
+    const index =
+      sections.flatMap(
+        sec => [...sec.querySelectorAll('.item')]
+      );
+
+    const normalize =
+      s => s.normalize('NFKD').toLowerCase();
+
+    let deb;
+
+    q?.addEventListener('input', () => {
+
+      clearTimeout(deb);
+
+      deb = setTimeout(() => {
+
+        const term =
+          normalize(q.value.trim());
+
+        if(!term){
+
+          index.forEach(
+            el => el.style.display = ''
+          );
+
+          sections.forEach(
+            sec => sec.style.display = ''
+          );
+
+          return;
+        }
+
+        index.forEach(el => {
+
+          const hay =
+            (el.getAttribute('data-k') || '')
+            + ' '
+            + el.textContent;
+
+          el.style.display =
+            normalize(hay).includes(term)
+              ? ''
+              : 'none';
+
+        });
+
+        sections.forEach(sec => {
+
+          const any =
+            [...sec.querySelectorAll('.item')]
+              .some(
+                item => item.style.display !== 'none'
+              );
+
+          sec.style.display =
+            any ? '' : 'none';
+
+        });
+
+      }, 120);
+
+    });
+
+
+    /* =========================
+       Cocktail Sorting
+    ========================= */
+
+    const sortBtns =
+      [...document.querySelectorAll('.sortbtn')];
+
+    const cocktailList =
+      document.getElementById('cocktailList');
+
+    /* Store original order */
+
+    const original =
+      [...cocktailList.children];
+
+
+    function sortCocktails(mode){
+
+      if(mode === 'default'){
+
+        original.forEach(
+          node => cocktailList.appendChild(node)
+        );
+
+        return;
+      }
+
+
+      const items =
+        [...cocktailList.children];
+
+
+      const getNum =
+        (el, key) =>
+          parseInt(
+            el.getAttribute(key) || '0',
+            10
+          );
+
+
+      /* Preserve original order when ratings are tied */
+
+      const idx =
+        new Map(
+          original.map(
+            (node, i) => [node, i]
+          )
+        );
+
+
+      items.sort((a, b) => {
+
+        let primary = 0;
+
+
+        if(mode === 'sweet-desc'){
+
+          primary =
+            getNum(b, 'data-sweet')
+            - getNum(a, 'data-sweet');
+
+        }
+
+
+        if(mode === 'sweet-asc'){
+
+          primary =
+            getNum(a, 'data-sweet')
+            - getNum(b, 'data-sweet');
+
+        }
+
+
+        if(mode === 'abv-desc'){
+
+          primary =
+            getNum(b, 'data-abv')
+            - getNum(a, 'data-abv');
+
+        }
+
+
+        if(mode === 'abv-asc'){
+
+          primary =
+            getNum(a, 'data-abv')
+            - getNum(b, 'data-abv');
+
+        }
+
+
+        if(primary !== 0){
+          return primary;
+        }
+
+
+        return
+          (idx.get(a) ?? 0)
+          - (idx.get(b) ?? 0);
+
+      });
+
+
+      items.forEach(
+        node => cocktailList.appendChild(node)
+      );
+
+    }
+
+
+    sortBtns.forEach(btn => {
+
+      btn.addEventListener('click', () => {
+
+        sortBtns.forEach(
+          b => b.classList.remove('active')
+        );
+
+        btn.classList.add('active');
+
+        sortCocktails(
+          btn.getAttribute('data-sort')
+        );
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
